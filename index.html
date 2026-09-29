@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 口播数字人 · 提案资料库</title>
+<style>
+:root{
+  --bg:#faf9f7; --panel:#ffffff; --ink:#1f2933; --ink2:#5b6672;
+  --line:#e5e1da; --accent:#0f6b62; --accent2:#c2703d;
+  --a:#0f6b62; --b:#4a7ba7; --c:#c2703d; --warn:#a8442a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.75;
+  padding:0 0 80px;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+header{padding:56px 0 32px;border-bottom:2px solid var(--ink);margin-bottom:36px}
+h1{font-size:2.1rem;letter-spacing:-.02em;margin-bottom:8px}
+.sub{color:var(--ink2);font-size:.95rem}
+h2{font-size:1.3rem;margin:44px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:1.05rem;margin:26px 0 10px;color:var(--accent)}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 8px;align-items:center}
+.filters .lbl{font-size:.82rem;color:var(--ink2);margin-right:6px}
+button.f{
+  padding:6px 15px;border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  color:var(--ink2);font-size:.84rem;cursor:pointer;transition:.15s;font-family:inherit
+}
+button.f:hover{border-color:var(--accent);color:var(--accent)}
+button.f.on{background:var(--accent);border-color:var(--accent);color:#fff}
+input.search{
+  width:100%;padding:11px 16px;border:1px solid var(--line);border-radius:8px;
+  background:var(--panel);font-size:.94rem;font-family:inherit;margin-bottom:8px
+}
+input.search:focus{outline:none;border-color:var(--accent)}
+
+.cards{display:grid;gap:16px;margin-top:20px}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+  border-left:4px solid var(--a)
+}
+.card[data-tier="A"]{border-left-color:var(--a)}
+.card[data-tier="B"]{border-left-color:var(--b)}
+.card[data-tier="C"]{border-left-color:var(--c)}
+.card h4{font-size:1.02rem;margin-bottom:4px}
+.card h4 .tier{
+  display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:4px;
+  margin-right:8px;vertical-align:middle;font-weight:600
+}
+.tier.A{background:#e3f0ee;color:var(--a)}
+.tier.B{background:#e6eef6;color:var(--b)}
+.tier.C{background:#fbeade;color:var(--c)}
+.meta{font-size:.82rem;color:var(--ink2);margin:8px 0}
+.meta a{color:var(--accent);word-break:break-all}
+.meta a:hover{text-decoration:underline}
+.tag{
+  display:inline-block;background:#f0ede8;color:var(--ink2);font-size:.74rem;
+  padding:2px 9px;border-radius:4px;margin:6px 6px 0 0
+}
+.tag .in{color:var(--a);font-weight:600}
+.tag .inf{color:var(--warn);font-weight:600}
+.desc{font-size:.9rem;margin-top:10px}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.88rem;background:var(--panel)}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f4f1ec;font-weight:600;font-size:.82rem;color:var(--ink2)}
+tr:hover td{background:#faf9f7}
+code{background:#f0ede8;padding:1px 6px;border-radius:3px;font-size:.85em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ok{color:var(--a);font-weight:700}
+.no{color:var(--warn);font-weight:700}
+.note{background:#fdf6ee;border-left:4px solid var(--accent2);padding:14px 18px;border-radius:6px;margin:16px 0;font-size:.9rem}
+.note b{color:var(--accent2)}
+.hide{display:none}
+.empty{padding:40px;text-align:center;color:var(--ink2)}
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink2);font-size:.85rem}
+ul.tight{padding-left:20px;font-size:.9rem}ul.tight li{margin:4px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>AI 口播数字人 · 产研实习合作提案资料库</h1>
+  <p class="sub">建立日期 2026-09-29 &nbsp;·&nbsp; 四份调研 &nbsp;·&nbsp; 149 条带来源的证据条目 &nbsp;·&nbsp; 所有数字可回溯到 URL 与日期</p>
+</header>
+
+<h2>使用说明</h2>
+<p style="font-size:.92rem">这是提案 PPT 的证据底库。核心纪律:<b>凡进入结论页的数字,必须能当场说出来源与日期</b>。搜索框支持全文检索,等级筛选用于快速定位哪些结论能直接用。</p>
+
+<div class="note">
+<b>证据等级</b> —&nbsp;
+<span class="tier A">A</span> 官方仓库 / 论文原文 / 监管文件 / 上市公司公告 &nbsp;&nbsp;
+<span class="tier B">B</span> 权威媒体 / 行业白皮书 &nbsp;&nbsp;
+<span class="tier C">C</span> 自媒体 / 营销号(仅作线索,禁止进结论页)
+</div>
+
+<h2>按 PPT 章节找证据</h2>
+<table>
+<tr><th>章节</th><th>核心问题</th><th>去哪找</th></tr>
+<tr><td>2. 工作流分析</td><td>经纪人现在怎么做?AI 用到哪一层?</td><td><code>04</code> E-W-01 ~ E-W-08</td></tr>
+<tr><td>2. 竞品与公司</td><td>专业公司在做什么?贝壳如视?</td><td><code>03</code> 竞品节 + <code>04</code> 公司画像</td></tr>
+<tr><td>3. 数字人技术</td><td>开源方案能商用吗?多快?</td><td><code>01</code> 全篇</td></tr>
+<tr><td>3. 技术可行性</td><td>为什么不用端到端视频?</td><td><code>02</code> E-A-05(Sora 2 自证缺陷)</td></tr>
+<tr><td>4. 架构图</td><td>管线怎么拆?难点在哪?</td><td><code>02-架构与规划/_需求拆解.md</code></td></tr>
+<tr><td>4. 人员与时间</td><td>3-6 个月能交付什么?</td><td><code>04</code> E-I-* + 骨架 P12</td></tr>
+<tr><td>4. 成本</td><td>算力贵不贵?</td><td><code>04</code> E-C-11 + <code>02</code> 成本节</td></tr>
+</table>
+
+<h2>五个最硬的事实</h2>
+<div class="cards">
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>市场在投票选 3D,不是视频</h4>
+    <div class="meta">58 同城/安居客研究院《2026年百万房产经纪人生存报告》 · 2026-07-02 · 新华社《经济参考报》报道,人民网、南方+ 交叉印证</div>
+    <div class="desc">VR 看房 <b>26.6% → 45.0%(升至第一)</b>;视频看房 <b>37.9% → 20.9%</b>。同时经纪人 AI 使用率 49.7%(一线 58.9%),但用途全部停在文案层,无一项指向"生成可播放的讲解内容"。</div>
+  </div>
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>端到端视频模型在运镜上主动认输</h4>
+    <div class="meta">OpenAI 官方文档,经 Microsoft Learn · 2026-09-29 核验</div>
+    <div class="desc">Sora 2 官方自述难以处理 <code>precise time-based event sequencing such as camera movement</code>,且<b>输入上限两张图</b>;同文档列出 spatial reasoning(分清左右)亦有困难。而房产讲解恰恰要求空间准确 + 覆盖完整 + 运镜可控。</div>
+  </div>
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>看起来免费的开源,商用都有坑</h4>
+    <div class="meta">各仓库 LICENSE 原文,GitHub API 实测 · 2026-09-29</div>
+    <div class="desc">LivePortrait 的 InsightFace <b>仅限非商业研究</b>;HeyGem/DUIX <b>MAU&gt;1000 强制商业授权</b>+ 强制署名;Wav2Lip <b>无 LICENSE 文件</b>;LTX-2.x <b>年营收 ≥$10M 须付费许可</b>;HunyuanVideo <b>排除欧盟/英国/韩国</b>;3DGS 系仓库字段均为 <code>NOASSERTION</code>。8 个开源视频模型中仅 4 个无条件可商用。</div>
+  </div>
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>合规是前置条件,不是加分项</h4>
+    <div class="meta">cac.gov.cn 原文逐条读取</div>
+    <div class="desc">《深度合成管理规定》第十四条:人脸/人声编辑须取得被编辑者<b>"单独同意"</b>(肖像授权,非内容标识)。《标识办法》<b>2025-09-01 施行</b>:数字人视频同时命中"视频"与"虚拟场景"两类,标识要求叠加;元数据须含服务提供者名称/编码。</div>
+  </div>
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>算力根本不是瓶颈</h4>
+    <div class="meta">RunPod / Lambda / AWS 官方定价页 · 查询日 2026-09-29</div>
+    <div class="desc">RTX 4090 <b>$0.34/h</b>,重建一套户型约 $34,6 个月总 GPU 费<b>百美元级</b>——远低于一名实习 6 个月的人力成本。瓶颈在"人对房产领域的建模",而评测集恰好是 GPU 造不出、人能造的东西。</div>
+  </div>
+</div>
+
+<h2>两个必须先知道的竞品事实</h2>
+<div class="note" style="background:#fdf1ec;border-left-color:var(--warn)">
+<b>⚠️ 写 PPT 前必读</b> —&nbsp; 下面两条如果不主动说,大概率会被对方问出来。
+</div>
+
+<div class="cards">
+  <div class="card" data-tier="A">
+    <h4><span class="tier A">A</span>CinemaTraj 几乎逐字命中需求 2</h4>
+    <div class="meta"><a href="https://arxiv.org/abs/2607.26910" target="_blank">arxiv.org/abs/2607.26910</a> · 2026-07-29 · CC BY 4.0</div>
+    <div class="desc">LLM agent + 结构化 3D 场景图,把讲解意图分解为原子电影运镜(dolly/orbit/crane/pan/tilt/zoom/arc),参数化轨迹可针对<b>碰撞避免</b>优化,并生成<b>与相机运动对齐的同步旁白与字幕</b>。摘要原句:<code>applications ranging from real-estate advertising to virtual tour creation</code>。<br><br>
+    <b>含义</b>:既不能把"提出这个思路"当卖点(已是 2 个月前的公开研究),但正好提供了顶会级可复现基线 —— 你的价值在落地管线与垂直评测集。</div>
+  </div>
+  <div class="card" data-tier="B">
+    <h4><span class="tier B">B</span>贝壳如视 2019 年就有 AI 讲房</h4>
+    <div class="meta">贝壳技术副总裁惠新宸对外披露 · 环球网转述公司新闻稿 · <b>未找到贝壳原始发布,故为 B 级</b></div>
+    <div class="desc">C 端上线 AI 讲房,基于 TTS 从周边配套/小区/户型结构/交易信息四维度自动生成讲稿,"3 秒生成讲房"。<b>用户单次收听完成率 73.8%</b>,VR 房源超 118 万套。<br><br>
+    <b>含义</b>:需求 1 不是新东西。差异化在于<b>预生成文案播报</b> vs <b>数字人在 3D 场景里指着具体位置说话</b> —— 讲解与空间绑定。</div>
+  </div>
+</div>
+
+<h2>开源许可证对照(选型分水岭)</h2>
+<h3>数字人</h3>
+<table>
+<tr><th>方案</th><th>归属</th><th>许可</th><th>商用</th><th>关键限制</th></tr>
+<tr><td><b>MuseTalk</b></td><td>腾讯音乐娱乐 Lyra Lab</td><td>MIT + 模型可商用</td><td class="ok">✅</td><td>官方自述 256×256、胡须/唇色保留不佳、单帧抖动</td></tr>
+<tr><td><b>LatentSync</b></td><td>字节跳动</td><td>Apache-2.0</td><td class="ok">✅</td><td>20-50 步扩散,不具实时性</td></tr>
+<tr><td>LiveTalking</td><td>—</td><td>Apache-2.0</td><td class="ok">✅</td><td>—</td></tr>
+<tr><td>LivePortrait</td><td>快手</td><td>代码 MIT</td><td class="no">⚠️</td><td>InsightFace 模型仅限非商业研究,须替换检测模型</td></tr>
+<tr><td>HeyGem / DUIX</td><td>硅基智能</td><td>非标准社区许可</td><td class="no">❌</td><td>MAU&gt;1000 强制商业授权 + 强制 "Built with DUIX.COM" 署名</td></tr>
+<tr><td>Wav2Lip</td><td>—</td><td><b>无 LICENSE 文件</b></td><td class="no">❌</td><td>GitHub 返回 null,属未授权状态</td></tr>
+<tr><td>RobustVideoMatting</td><td>—</td><td>GPL-3.0</td><td class="no">❌</td><td>copyleft,闭源商用有传染风险</td></tr>
+</table>
+
+<h3>视频生成模型</h3>
+<table>
+<tr><th>模型</th><th>许可</th><th>商用</th><th>关键限制</th></tr>
+<tr><td><b>Wan2.2 / Wan2.1</b> · 阿里</td><td>Apache-2.0</td><td class="ok">✅</td><td>唯一无障碍旗舰开源,但无口型/说话人驱动管线</td></tr>
+<tr><td>CogVideoX / Mochi / Step-Video</td><td>Apache-2.0 / MIT</td><td class="ok">✅</td><td>需保留声明</td></tr>
+<tr><td>HunyuanVideo-1.5 · 腾讯</td><td>腾讯混元社区许可</td><td class="no">⚠️</td><td><b>排除欧盟/英国/韩国法域</b></td></tr>
+<tr><td>LTX-2.x · Lightricks</td><td>社区许可</td><td class="no">⚠️</td><td>年营收 ≥$10M 须付费许可,违约 30 天内补交</td></tr>
+<tr><td>HunyuanVideo(初版)</td><td><b>无 LICENSE 文件</b></td><td class="no">❌</td><td>仓库根目录无 LICENSE,不可推定</td></tr>
+<tr><td>3DGS / instant-ngp / COLMAP / Open3D</td><td>字段均 <code>NOASSERTION</code></td><td class="no">❌</td><td>需法务逐个核对</td></tr>
+</table>
+
+<div class="note">
+<b>⚠️ GitHub 的 license 标签不可信</b> —&nbsp; 腾讯与 LTX 都返回 <code>NOASSERTION</code>,必须读 LICENSE 原文。8 个开源视频模型中<b>仅 4 个无条件可商用</b>。
+</div>
+
+<h2>成本硬数据</h2>
+<table>
+<tr><th>项</th><th>数值</th><th>来源</th></tr>
+<tr><td>RTX 4090 (RunPod)</td><td><b>$0.34/h</b></td><td>官方定价页,2026-09-29</td></tr>
+<tr><td>A100 80G (RunPod)</td><td>$1.19/h</td><td>同上</td></tr>
+<tr><td>H100 PCIe (RunPod)</td><td>$1.99/h</td><td>同上</td></tr>
+<tr><td>H100 SXM (Lambda)</td><td>$4.29/h</td><td>同上</td></tr>
+<tr><td>p5.48xlarge 8×H100 (AWS)</td><td>$55.04/h</td><td>同上</td></tr>
+<tr><td>调 AI 视频 API</td><td><b>$5–25 / 分钟</b></td><td>Veo 3.1 $0.05–0.40/秒;Seedance ≈1 元/秒</td></tr>
+<tr><td>自部署视频模型</td><td><b>25–60 GPU 小时 / 分钟</b></td><td>Wan2.1 官方 README:RTX 4090 出 5 秒 480P 约 4 分钟</td></tr>
+</table>
+<div class="note">
+<b>国内大厂 GPU 无公开报价</b> —&nbsp; 阿里云/腾讯云/火山引擎 H100 需登录控制台询价。第三方比价博客数据不可用(该博客 RunPod A100 写 $1.39,官方实为 $1.19)。
+</div>
+
+<h2>全部证据条目</h2>
+<p style="font-size:.88rem;color:var(--ink2);margin-top:6px">按 PPT 用途筛选。点标题看详情。</p>
+
+<div class="filters">
+  <span class="lbl">等级</span>
+  <button class="f on" data-t="all">全部</button>
+  <button class="f" data-t="A">A 一手</button>
+  <button class="f" data-t="B">B 二手</button>
+  <button class="f" data-t="C">C 线索</button>
+  <span class="lbl" style="margin-left:16px">用途</span>
+  <button class="f on" data-u="all">全部</button>
+  <button class="f" data-u="market">市场/工作流</button>
+  <button class="f" data-u="tech">技术选型</button>
+  <button class="f" data-u="comp">竞品/先例</button>
+  <button class="f" data-u="cost">成本/交付</button>
+</div>
+<input class="search" id="q" placeholder="全文搜索:如 许可证 / 数字人 / VR 看房 / CinemaTraj / 标识办法 …">
+
+<div class="cards" id="cards">
+
+<div class="card" data-tier="A" data-u="market">
+  <h4><span class="tier A">A</span>渠道迁移:VR 看房超越视频看房</h4>
+  <div class="meta"><a href="http://www.jjckb.cn/20260702/9be6331d38e8449c8753c4df564be11c/c.html" target="_blank">jjckb.cn/20260702/9be6331d...</a> · 2026-07-02 · 权威媒体转述 58/安居客研究院报告</div>
+  <span class="tag">证据:<span class="in">B 级</span></span><span class="tag">PPT:<span class="in">可用</span></span>
+  <div class="desc">VR 看房 26.6%→45.0%(升第一),视频看房 37.9%→20.9%,文字 4.6%。<br>
+  <b>注意</b>:报告未做原因归因,PPT 不得替它归因。正确表述"数据指向三维沉浸式呈现份额上升"。</div>
+</div>
+
+<div class="card" data-tier="B" data-u="market">
+  <h4><span class="tier B">B</span>AI 渗透停在文案层</h4>
+  <div class="meta"><a href="http://www.jjckb.cn/20260702/9be6331d38e8449c8753c4df564be11c/c.html" target="_blank">jjckb.cn</a> · 2026-07-02 · 人民网/南方+ 交叉印证</div>
+  <span class="tag">PPT:<span class="in">可用</span></span>
+  <div class="desc">经纪人 AI 使用率 49.7%(一线 58.9%),用途 top3 为自媒体推广 29.1% / 采集信息 28.7% / 需求匹配 24.2%。<b>无一项指向"生成可播放的讲解内容"</b>——这是本提案切入点(此为推断,非报告结论)。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>Sora 2 官方自述的技术缺陷</h4>
+  <div class="meta">Microsoft Learn 官方文档 · 2026-09-29 核验</div>
+  <span class="tag">PPT:<span class="in">强证据</span></span>
+  <div class="desc">原文自述难以处理 <code>precise time-based event sequencing such as camera movement</code>、<code>spatial reasoning</code>;输入上限两张图。Seedance 2.0 支持 9 图+3 视频+3 音频参考。<b>厂商自证的缺陷,比第三方评测更有力。</b></div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>CamCtrl3D:"轨迹→视频"已被顶会验证</h4>
+  <div class="meta"><a href="https://arxiv.org/abs/2501.06006" target="_blank">arxiv.org/abs/2501.06006</a> · 3DV 2025 · Microsoft Research</div>
+  <span class="tag">PPT:<span class="in">可用</span></span>
+  <div class="desc">给定相机轨迹生成 fly-through 视频可行。但其输入是<b>单图+轨迹</b>,非 3D 模型;我们已有 3D 资产,<b>用引擎离线渲染即可,不需要生成模型</b>。定位为备选路线/对照组。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>语音对齐是现成 API 能力</h4>
+  <div class="meta">Azure TTS 官方 SSML 文档 + WhisperX (BSD-2-Clause, ★24,294)</div>
+  <span class="tag">PPT:<span class="in">可用</span></span>
+  <div class="desc">Azure 支持 <code>bookmark</code>(词级 offset/duration)与 <code>viseme</code>(音素→视素)事件标签;WhisperX 提供词级时间戳。<b>运镜对齐不需要自研对齐器。</b><br>⚠️ 但 bookmark/viseme <b>字段结构未逐字核实</b>,该推断依赖这一点。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="comp">
+  <h4><span class="tier A">A</span>CinemaTraj:最接近本项目的公开研究</h4>
+  <div class="meta"><a href="https://arxiv.org/abs/2607.26910" target="_blank">arxiv.org/abs/2607.26910</a> · 2026-07-29 · <a href="https://cinematraj.github.io/" target="_blank">项目页</a></div>
+  <span class="tag">PPT:<span class="in">建议主位</span></span>
+  <div class="desc">四段式架构:3D 场景图 → 原子运镜分解 → 碰撞避免优化 → 旁白对齐。可直接作为系统设计蓝本,也是可复现可对比的基线。<b>但不能把"提出这个思路"当原创贡献。</b></div>
+</div>
+
+<div class="card" data-tier="B" data-u="comp">
+  <h4><span class="tier B">B</span>贝壳如视:AI 讲房已有成熟先例</h4>
+  <div class="meta">环球网转述公司新闻稿 · <b>未找到贝壳原始发布,故 B 级</b></div>
+  <span class="tag">PPT:<span class="in">需注明来源</span></span>
+  <div class="desc">2019 年 C 端上线,TTS 四维度自动生成讲稿。收听完成率 <b>73.8%</b>,VR 房源 <b>118 万套</b>。<br><b>差异化</b>:预生成文案播报 vs 数字人在 3D 场景里指着具体位置说话 —— 讲解与空间绑定。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>MuseTalk:唯一同时满足可商用+实时+单卡</h4>
+  <div class="meta"><a href="https://github.com/TMElyralab/MuseTalk" target="_blank">github.com/TMElyralab/MuseTalk</a> · ★6,644 · 2026-09-29 实测</div>
+  <span class="tag">PPT:<span class="in">推荐</span></span>
+  <div class="desc">MIT + 模型明确可商用。官方称 V100 上 30fps+,<b>非扩散模型</b>(单步隐空间 inpainting),4GB 显卡可跑。<br>官方自述局限:256×256、胡须/唇形唇色保留不佳、单帧抖动。<br>⚠️ 归属是<b>腾讯音乐娱乐 Lyra Lab</b>,不是腾讯 CSIG/TEG。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>Wan2.1 消费级显卡门槛</h4>
+  <div class="meta"><a href="https://github.com/Wan-Video/Wan2.1" target="_blank">github.com/Wan-Video/Wan2.1</a> · Apache-2.0 · 官方 README</div>
+  <span class="tag">PPT:<span class="in">成本论据</span></span>
+  <div class="desc">官方原文:T2V-1.3B 仅需 8.19GB 显存;<b>RTX 4090 生成 5 秒 480P 约需 4 分钟</b>。→ 一分钟 720P 约 25-60 GPU 小时,<b>对日更房产内容不成立</b>。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="cost">
+  <h4><span class="tier A">A</span>GPU 价格:算力不是瓶颈</h4>
+  <div class="meta">RunPod / Lambda / AWS 官方定价页 · 查询日 2026-09-29</div>
+  <span class="tag">PPT:<span class="in">核心论点</span></span>
+  <div class="desc">RTX 4090 <b>$0.34/h</b>。重建一套户型约 $34,6 个月总 GPU 费<b>百美元级</b>,远低于一名实习 6 个月人力成本。<b>瓶颈在人对房产领域的建模,而评测集是 GPU 造不出、人能造的。</b></div>
+</div>
+
+<div class="card" data-tier="A" data-u="cost">
+  <h4><span class="tier A">A</span>交付边界:不能承诺什么</h4>
+  <div class="meta">依据仓库生态规模与头部团队 JD 结构</div>
+  <span class="tag">PPT:<span class="in">诚实加分</span></span>
+  <div class="desc">3DGS 官方仓库 24,021 stars / <b>713 open issues</b> —— 不支持单人 3-6 个月从零复现。字节 Seed 实习岗共同结构是"已有方向+落地产出",共同缺席"独立提出新方法"。<br><b>能承诺</b>:端到端 demo + 房产 3D 评测集 + 基线量化对齐 + 许可证核查报告。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>合规:肖像"单独同意"是最高优先级</h4>
+  <div class="meta"><a href="https://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm" target="_blank">cac.gov.cn/2022-12/11/c_1672221949354811.htm</a> · 2023-01-10 施行</div>
+  <span class="tag">PPT:<span class="in">必引</span></span>
+  <div class="desc">《深度合成管理规定》第十四条:人脸/人声编辑须提示使用者<b>告知被编辑个人并取得"单独同意"</b>。<br><b>第一份要签的文件不是算法协议,而是主播本人的肖像与声音授权书</b>,且不能被概括性隐私政策吞掉。</div>
+</div>
+
+<div class="card" data-tier="A" data-u="tech">
+  <h4><span class="tier A">A</span>合规:内容标识双类叠加</h4>
+  <div class="meta"><a href="https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm" target="_blank">cac.gov.cn/2025-03/14/c_1743654684782215.htm</a> · 2025-09-01 施行</div>
+  <span class="tag">PPT:<span class="in">必引</span></span>
+  <div class="desc">《标识办法》第四条:视频"起始画面和播放周边"显著标识 + 虚拟场景"起始画面"显著标识 → <b>数字人视频双类叠加执行</b>。第五条:元数据须含服务提供者名称/编码。第九条:唯一免标识出口,代价是日志留存 ≥6 个月。</div>
+</div>
+
+<div class="card" data-tier="C" data-u="market">
+  <h4><span class="tier C">C</span>⚠️ 数字人售楼转化率数据:全网查无实据</h4>
+  <div class="meta">券商研报、中指/易居研究院、上市公司公告均未找到</div>
+  <span class="tag">PPT:<span class="in">禁止引用</span></span>
+  <div class="desc">所有"转化率提升 X%""看房效率提升 Y 倍"仅见于内容农场与营销号。行业流传的"3D tours → 2× 浏览量、72% 分享提升、31% 更快售出"只存在单一内容农场页面。<b>已记为市场信息缺口,不得进入结论页。</b></div>
+</div>
+
+<div class="card" data-tier="C" data-u="cost">
+  <h4><span class="tier C">C</span>⚠️ 样板房拍摄报价:完全未找到</h4>
+  <div class="meta">三路查找均未获得可核验来源</div>
+  <span class="tag">PPT:<span class="in">禁止引用</span></span>
+  <div class="desc">成本对比改用<b>成本曲线结构</b>表述(按房源数线性 vs 按观看人数并发),不依赖任何未核验数字。建议走三条路补:上市公司年报营销费用拆分、政府采购网公示、直接向公司索取过往供应商报价。</div>
+</div>
+
+</div>
+<div class="empty hide" id="empty">没有匹配的条目</div>
+
+<footer>
+<p><b>目录</b> &nbsp; <code>00-资料库/_规范.md</code> 证据规范 &nbsp;·&nbsp; <code>00-资料库/01-数字人/</code> 数字人技术(34 条) &nbsp;·&nbsp; <code>00-资料库/02-AI视频/</code> AI 视频(42 条) &nbsp;·&nbsp; <code>00-资料库/03-数字人房产中介案例/</code> 房产案例(28 条) &nbsp;·&nbsp; <code>00-资料库/04-其他相关资料/</code> 工作流与成本(45 条)</p>
+<p><b>规划文档</b> &nbsp; <code>02-架构与规划/_需求拆解.md</code> 需求拆解与技术判断 &nbsp;·&nbsp; <code>01-PPT素材/_PPT骨架.md</code> PPT 骨架大纲</p>
+<p style="margin-top:12px">全部 GitHub / arXiv / cac.gov.cn / 定价页数据于 <b>2026-09-29</b> 实测获取。C 级内容仅作线索,禁止进入 PPT 结论页。</p>
+</footer>
+
+</div>
+
+<script>
+const cards=[...document.querySelectorAll('#cards .card')];
+const empty=document.getElementById('empty');
+const q=document.getElementById('q');
+let tier='all',use='all';
+
+function apply(){
+  const s=q.value.trim().toLowerCase();
+  let n=0;
+  cards.forEach(c=>{
+    const okT = tier==='all' || c.dataset.tier===tier;
+    const okU = use==='all'  || c.dataset.u===use;
+    const okS = !s || c.textContent.toLowerCase().includes(s);
+    const show = okT&&okU&&okS;
+    c.classList.toggle('hide',!show);
+    if(show)n++;
+  });
+  empty.classList.toggle('hide',n>0);
+}
+document.querySelectorAll('.filters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(b.dataset.t){tier=b.dataset.t;
+      document.querySelectorAll('[data-t]').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');}
+    if(b.dataset.u){use=b.dataset.u;
+      document.querySelectorAll('[data-u]').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');}
+    apply();
+  });
+});
+q.addEventListener('input',apply);
+</script>
+</body>
+</html>
